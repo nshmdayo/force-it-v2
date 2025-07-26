@@ -14,6 +14,13 @@ env_logger = "0.11"
 log = "0.4"
 tokio = { version = "1.0", features = ["full"] }
 rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# OpenCV will be added later when system is ready
+# opencv = "0.91"
+# reqwest = { version = "0.12", features = ["json"] }
+# image = "0.25"
+# ndarray = "0.15"
 
 [[bin]]
 name = "force-it-v2-rust"

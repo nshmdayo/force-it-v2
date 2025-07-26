@@ -3,6 +3,7 @@ mod particle;
 mod physics;
 mod simple_renderer;
 mod input;
+mod pose_detection;
 
 use winit::{
     event::*,
@@ -110,7 +111,10 @@ impl winit::application::ApplicationHandler for App {
                     if let Some(physics_system) = &mut self.physics_system {
                         physics_system.update();
 
-                        if let Some(input_system) = &self.input_system {
+                        // Update input system
+                        if let Some(input_system) = &mut self.input_system {
+                            input_system.update();
+                            
                             if input_system.is_calibrated {
                                 let right_hand_vector = input_system.get_right_hand_vector();
                                 if right_hand_vector.magnitude() > 0.001 && input_system.body_joints.right_hand.is_open {
@@ -152,12 +156,14 @@ async fn main() {
     let event_loop = EventLoop::new().unwrap();
     let mut app = App::default();
     
-    println!("ForceIt - Body-based Interaction System");
+    println!("ForceIt - AI-Powered Pose Interaction System");
     println!("Controls:");
     println!("  Space - Calibrate system");
-    println!("  Mouse - Control right hand");
-    println!("  Left Click - Open hand to create forces");
+    println!("  📸 Camera - Real-time pose detection");
+    println!("  ✋ Hand Gestures - Control particles with your hands");
+    println!("  🖱️  Mouse - Fallback input (if camera unavailable)");
     println!("  Escape - Exit");
+    println!();
 
     event_loop.run_app(&mut app).unwrap();
 }
