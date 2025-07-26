@@ -1,0 +1,20 @@
+[package]
+name = "force-it-v2-rust"
+version = "0.1.0"
+edition = "2021"
+description = "Body-based Interaction Methods and Systems for Ambient Space - Rust implementation"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+
+[dependencies]
+winit = "0.30"
+cgmath = "0.18"
+pollster = "0.3"
+env_logger = "0.11"
+log = "0.4"
+tokio = { version = "1.0", features = ["full"] }
+rand = "0.8"
+
+[[bin]]
+name = "force-it-v2-rust"
+path = "src/main.rs"
